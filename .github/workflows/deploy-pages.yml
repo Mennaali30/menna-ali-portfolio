@@ -20,8 +20,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env:
-      API_BACKUP_DIR: ${{ runner.temp }}/portfolio_api_backup_${{ github.run_id }}_${{ github.run_attempt }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,12 +35,15 @@ jobs:
 
       - name: Isolate API route outside workspace
         run: |
-          if [ -d "$API_BACKUP_DIR" ]; then
-            rm -rf "$API_BACKUP_DIR"
+          BACKUP_PATH="$RUNNER_TEMP/portfolio_api_backup_${{ github.run_id }}_${{ github.run_attempt }}"
+          if [ -e "$BACKUP_PATH" ]; then
+            echo "::error::Backup path $BACKUP_PATH already exists. Aborting isolation to avoid overwriting."
+            exit 1
           fi
+          echo "API_BACKUP_DIR=$BACKUP_PATH" >> "$GITHUB_ENV"
           if [ -d "src/app/api" ]; then
-            mkdir -p "${{ runner.temp }}"
-            mv src/app/api "$API_BACKUP_DIR"
+            mkdir -p "$RUNNER_TEMP"
+            mv src/app/api "$BACKUP_PATH"
           fi
 
       - name: Build static export for GitHub Pages
@@ -53,13 +54,14 @@ jobs:
       - name: Restore API route to workspace
         if: always()
         run: |
-          if [ -d "$API_BACKUP_DIR" ]; then
+          BACKUP_PATH="${API_BACKUP_DIR:-}"
+          if [ -n "$BACKUP_PATH" ] && [ -d "$BACKUP_PATH" ]; then
             if [ -d "src/app/api" ]; then
-              echo "::error::Conflict detected: Both $API_BACKUP_DIR and src/app/api exist. Halting restoration to prevent data loss."
+              echo "::error::Conflict detected: Both $BACKUP_PATH and src/app/api exist. Halting restoration to prevent data loss."
               exit 1
             else
               mkdir -p src/app
-              mv "$API_BACKUP_DIR" src/app/api
+              mv "$BACKUP_PATH" src/app/api
             fi
           fi
 
