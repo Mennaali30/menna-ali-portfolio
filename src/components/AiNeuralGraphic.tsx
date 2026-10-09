@@ -58,11 +58,11 @@ export default function AiNeuralGraphic() {
     let signals: Signal[] = [];
 
     const layerColors = [
-      { color: "#38bdf8", glow: "rgba(56, 189, 248, 0.4)" }, // Cyan (Input)
-      { color: "#60a5fa", glow: "rgba(96, 165, 250, 0.4)" }, // Blue
-      { color: "#818cf8", glow: "rgba(129, 140, 248, 0.5)" }, // Indigo
-      { color: "#a855f7", glow: "rgba(168, 85, 247, 0.4)" }, // Purple
-      { color: "#34d399", glow: "rgba(52, 211, 153, 0.5)" }  // Emerald (Output)
+      { color: "#D8E2DC", glow: "rgba(216, 226, 220, 0.4)" }, // Sage (Input)
+      { color: "#FFFFFF", glow: "rgba(255, 255, 255, 0.4)" }, // White
+      { color: "#FFCAD4", glow: "rgba(255, 202, 212, 0.5)" }, // Soft Pink
+      { color: "#F4ACB7", glow: "rgba(244, 172, 183, 0.5)" }, // Dusty Pink
+      { color: "#9D8189", glow: "rgba(157, 129, 137, 0.5)" }  // Muted Mauve (Output)
     ];
 
     function initNetwork() {
@@ -126,7 +126,7 @@ export default function AiNeuralGraphic() {
         toNode: conn.to,
         progress: 0,
         speed: 0.02 + Math.random() * 0.025,
-        color: nodes[conn.to]?.color || "#38bdf8"
+        color: nodes[conn.to]?.color || "#F4ACB7"
       });
 
       if (signals.length > 25) {
@@ -149,8 +149,8 @@ export default function AiNeuralGraphic() {
         height / 2,
         width * 0.6
       );
-      bgGlow.addColorStop(0, "rgba(99, 102, 241, 0.08)");
-      bgGlow.addColorStop(0.5, "rgba(56, 189, 248, 0.03)");
+      bgGlow.addColorStop(0, "rgba(244, 172, 183, 0.08)");
+      bgGlow.addColorStop(0.5, "rgba(216, 226, 220, 0.04)");
       bgGlow.addColorStop(1, "transparent");
       ctx.fillStyle = bgGlow;
       ctx.fillRect(0, 0, width, height);
@@ -167,7 +167,7 @@ export default function AiNeuralGraphic() {
 
         // Opacity oscillation
         const alpha = 0.08 + Math.sin(time + conn.weight * 10) * 0.04;
-        ctx.strokeStyle = `rgba(148, 163, 184, ${Math.max(0.04, alpha)})`;
+        ctx.strokeStyle = `rgba(216, 226, 220, ${Math.max(0.04, alpha)})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       });
@@ -237,12 +237,12 @@ export default function AiNeuralGraphic() {
   return (
     <div className="relative w-full max-w-lg mx-auto aspect-square flex items-center justify-center p-4">
       {/* Outer ambient decorative ring */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/10 via-cyan-500/5 to-purple-500/10 backdrop-blur-2xl border border-indigo-500/20 shadow-2xl shadow-indigo-500/10 overflow-hidden">
+      <div className="absolute inset-0 rounded-3xl bg-[#222629] backdrop-blur-2xl border border-[#9D8189]/30 shadow-2xl shadow-[#222629]/20 overflow-hidden">
         {/* Decorative corner brackets */}
-        <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400/60" />
-        <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-indigo-400/60" />
-        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-purple-400/60" />
-        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-emerald-400/60" />
+        <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#D8E2DC]/60" />
+        <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#F4ACB7]/60" />
+        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#9D8189]/60" />
+        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#FFCAD4]/60" />
 
         {/* Live Canvas */}
         <canvas
@@ -253,39 +253,39 @@ export default function AiNeuralGraphic() {
 
         {/* Floating AI HUD Chips */}
         <div className="absolute top-5 left-5 right-5 flex items-center justify-between text-xs pointer-events-none">
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 font-mono backdrop-blur-md shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#222629]/90 border border-[#F4ACB7]/40 text-[#FFCAD4] font-mono backdrop-blur-md shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#F4ACB7] animate-ping" />
             <span>NEURAL PIPELINE ACTIVE</span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700/60 text-slate-300 font-mono backdrop-blur-md">
-            <Cpu className="w-3.5 h-3.5 text-indigo-400" />
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#222629]/90 border border-[#9D8189]/40 text-[#D8E2DC] font-mono backdrop-blur-md">
+            <Cpu className="w-3.5 h-3.5 text-[#F4ACB7]" />
             <span>CUDA / T4 GPU</span>
           </div>
         </div>
 
         {/* Bottom Floating Telemetry Panel */}
-        <div className="absolute bottom-5 left-5 right-5 p-3 rounded-xl bg-slate-950/85 border border-indigo-500/30 backdrop-blur-md shadow-lg pointer-events-auto">
+        <div className="absolute bottom-5 left-5 right-5 p-3 rounded-xl bg-[#222629]/95 border border-[#9D8189]/30 backdrop-blur-md shadow-lg pointer-events-auto">
           <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-mono">
-            <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-slate-400 block text-[10px]">ACCURACY</span>
-              <span className="text-emerald-400 font-bold">{activeTelemetry.confidence}</span>
+            <div className="p-1.5 rounded-lg bg-[#222629] border border-[#9D8189]/25">
+              <span className="text-[#D8E2DC]/70 block text-[10px]">ACCURACY</span>
+              <span className="text-white font-bold">{activeTelemetry.confidence}</span>
             </div>
-            <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-slate-400 block text-[10px]">CLASSES</span>
-              <span className="text-cyan-400 font-bold">47 GESTURES</span>
+            <div className="p-1.5 rounded-lg bg-[#222629] border border-[#9D8189]/25">
+              <span className="text-[#D8E2DC]/70 block text-[10px]">CLASSES</span>
+              <span className="text-[#FFCAD4] font-bold">47 GESTURES</span>
             </div>
-            <div className="p-1.5 rounded-lg bg-slate-900/60 border border-slate-800">
-              <span className="text-slate-400 block text-[10px]">LATENCY</span>
-              <span className="text-purple-400 font-bold">REAL-TIME</span>
+            <div className="p-1.5 rounded-lg bg-[#222629] border border-[#9D8189]/25">
+              <span className="text-[#D8E2DC]/70 block text-[10px]">LATENCY</span>
+              <span className="text-[#F4ACB7] font-bold">REAL-TIME</span>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+          <div className="mt-2 pt-2 border-t border-[#9D8189]/30 flex items-center justify-between text-[10px] text-[#D8E2DC]/80 font-mono">
             <span className="flex items-center gap-1">
-              <Activity className="w-3 h-3 text-cyan-400" />
+              <Activity className="w-3 h-3 text-[#F4ACB7]" />
               WASLA Multi-Modal Architecture
             </span>
-            <span className="text-indigo-300">CNN + LSTM + MediaPipe</span>
+            <span className="text-[#FFCAD4]">CNN + LSTM + MediaPipe</span>
           </div>
         </div>
       </div>

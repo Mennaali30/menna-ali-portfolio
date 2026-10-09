@@ -34,83 +34,83 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-300 border border-amber-500/30">
-            <Award className="w-3.5 h-3.5 text-amber-400" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#FFCAD4]/60 text-[#222629] border border-[#F4ACB7]/50 shadow-xs">
+            <Award className="w-3.5 h-3.5 text-[#9D8189]" />
             <span>FEATURED GRADUATION SHOWCASE • GRADE A+</span>
           </span>
         </div>
 
         {/* Big Showcase Container */}
-        <div className="glass-panel rounded-3xl p-6 sm:p-10 border border-indigo-500/25 relative overflow-hidden shadow-2xl shadow-indigo-950/40">
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#9D8189]/25 relative overflow-hidden shadow-lg">
           {/* Ambient decorative lighting */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cyan-500/10 via-indigo-500/10 to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#FFCAD4]/30 via-[#D8E2DC]/30 to-transparent pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
             {/* Left Column: Project Overview */}
             <div className="lg:col-span-7 flex flex-col">
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[#D8E2DC]/60 text-[#222629] border border-[#9D8189]/30">
                   Computer Vision & Deep Learning
                 </span>
-                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-white text-[#222629] border border-[#D8E2DC]">
                   91.74% Accuracy
                 </span>
-                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-indigo-950/60 text-indigo-300 border border-indigo-500/30">
+                <span className="px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-[#FFCAD4]/50 text-[#222629] border border-[#F4ACB7]/40">
                   June 2026
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug mb-4">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#222629] tracking-tight leading-snug mb-4">
                 {featuredProject.title}
               </h3>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="text-[#222629]/80 text-sm sm:text-base leading-relaxed mb-6">
                 {featuredProject.description}
               </p>
 
               {/* Key Highlights Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                  <div className="flex items-center gap-2 text-cyan-400 mb-1">
-                    <HandMetal className="w-4 h-4" />
-                    <span className="text-xs font-mono uppercase text-slate-400">Vocabulary</span>
+                <div className="p-3 rounded-xl bg-[#D8E2DC]/30 border border-[#9D8189]/20 shadow-xs">
+                  <div className="flex items-center gap-2 text-[#9D8189] mb-1">
+                    <HandMetal className="w-4 h-4 text-[#9D8189]" />
+                    <span className="text-xs font-mono uppercase text-[#9D8189]">Vocabulary</span>
                   </div>
-                  <div className="text-lg font-bold text-white font-mono">47 Signs</div>
-                  <div className="text-[11px] text-slate-400">Egyptian Sign Language</div>
+                  <div className="text-lg font-bold text-[#222629] font-mono">47 Signs</div>
+                  <div className="text-[11px] text-[#222629]/70">Egyptian Sign Language</div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
-                  <div className="flex items-center gap-2 text-emerald-400 mb-1">
-                    <ShieldCheck className="w-4 h-4" />
-                    <span className="text-xs font-mono uppercase text-slate-400">Benchmark</span>
+                <div className="p-3 rounded-xl bg-[#D8E2DC]/30 border border-[#9D8189]/20 shadow-xs">
+                  <div className="flex items-center gap-2 text-[#9D8189] mb-1">
+                    <ShieldCheck className="w-4 h-4 text-[#9D8189]" />
+                    <span className="text-xs font-mono uppercase text-[#9D8189]">Benchmark</span>
                   </div>
-                  <div className="text-lg font-bold text-emerald-400 font-mono">91.74%</div>
-                  <div className="text-[11px] text-slate-400">Validation Accuracy</div>
+                  <div className="text-lg font-bold text-[#222629] font-mono">91.74%</div>
+                  <div className="text-[11px] text-[#222629]/70">Validation Accuracy</div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 col-span-2 sm:col-span-1">
-                  <div className="flex items-center gap-2 text-purple-400 mb-1">
-                    <Smile className="w-4 h-4" />
-                    <span className="text-xs font-mono uppercase text-slate-400">Affect</span>
+                <div className="p-3 rounded-xl bg-[#D8E2DC]/30 border border-[#9D8189]/20 shadow-xs col-span-2 sm:col-span-1">
+                  <div className="flex items-center gap-2 text-[#9D8189] mb-1">
+                    <Smile className="w-4 h-4 text-[#9D8189]" />
+                    <span className="text-xs font-mono uppercase text-[#9D8189]">Affect</span>
                   </div>
-                  <div className="text-lg font-bold text-purple-300 font-mono">Emotion</div>
-                  <div className="text-[11px] text-slate-400">Facial Micro-Expressions</div>
+                  <div className="text-lg font-bold text-[#222629] font-mono">Emotion</div>
+                  <div className="text-[11px] text-[#222629]/70">Facial Micro-Expressions</div>
                 </div>
               </div>
 
               {/* Multi-Platform Deployment Badges */}
-              <div className="mb-6 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-300">
-                <span className="text-slate-400 flex items-center gap-1.5 font-sans font-semibold">
+              <div className="mb-6 p-3.5 rounded-xl bg-white border border-[#D8E2DC] flex flex-wrap items-center gap-4 text-xs font-mono text-[#222629] shadow-xs">
+                <span className="text-[#9D8189] flex items-center gap-1.5 font-sans font-semibold">
                   <span>Deployment Targets:</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 text-cyan-300">
-                  <Globe className="w-3.5 h-3.5" /> Web Platform
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#D8E2DC]/50 border border-[#9D8189]/20 text-[#222629]">
+                  <Globe className="w-3.5 h-3.5 text-[#9D8189]" /> Web Platform
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 text-indigo-300">
-                  <Monitor className="w-3.5 h-3.5" /> Desktop App
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#D8E2DC]/50 border border-[#9D8189]/20 text-[#222629]">
+                  <Monitor className="w-3.5 h-3.5 text-[#9D8189]" /> Desktop App
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 text-purple-300">
-                  <Smartphone className="w-3.5 h-3.5" /> Mobile App
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#D8E2DC]/50 border border-[#9D8189]/20 text-[#222629]">
+                  <Smartphone className="w-3.5 h-3.5 text-[#9D8189]" /> Mobile App
                 </span>
               </div>
 
@@ -119,7 +119,7 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                 {featuredProject.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-900/90 text-slate-300 border border-slate-800"
+                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-white text-[#222629] border border-[#D8E2DC] shadow-xs"
                   >
                     {tech}
                   </span>
@@ -131,7 +131,7 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                 <button
                   type="button"
                   onClick={onOpenModal}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-indigo-600 text-white shadow-md shadow-indigo-600/30 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#F4ACB7] hover:bg-[#F4ACB7]/90 text-[#222629] border border-[#F4ACB7] shadow-md shadow-[#F4ACB7]/25 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
                 >
                   <span>Explore Full Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -140,26 +140,26 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                 <button
                   type="button"
                   onClick={onOpenModal}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-white hover:bg-[#D8E2DC]/40 text-[#222629] border border-[#9D8189]/30 transition-colors cursor-pointer"
                 >
-                  <FolderGit2 className="w-3.5 h-3.5 text-indigo-400" />
+                  <FolderGit2 className="w-3.5 h-3.5 text-[#9D8189]" />
                   <span>Architecture & Pipeline</span>
                 </button>
               </div>
             </div>
 
             {/* Right Column: Case Study Interactive Pipeline Navigator */}
-            <div className="lg:col-span-5 flex flex-col rounded-2xl bg-slate-950/70 border border-indigo-500/20 p-5 shadow-inner">
-              <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
-                  <Activity className="w-4 h-4" />
+            <div className="lg:col-span-5 flex flex-col rounded-2xl bg-[#222629] border border-[#9D8189]/30 p-5 shadow-lg text-white">
+              <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#9D8189]/30">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#D8E2DC] font-bold uppercase tracking-wider">
+                  <Activity className="w-4 h-4 text-[#F4ACB7]" />
                   <span>Case Study Lifecycle</span>
                 </div>
-                <span className="text-[11px] font-mono text-slate-400">WASLA System</span>
+                <span className="text-[11px] font-mono text-[#D8E2DC]/80">WASLA System</span>
               </div>
 
               {/* Case Study Step Tabs */}
-              <div className="flex flex-wrap gap-1 mb-4 p-1 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div className="flex flex-wrap gap-1 mb-4 p-1 rounded-xl bg-[#222629] border border-[#9D8189]/30">
                 {(["problem", "approach", "technologies", "results", "deployment"] as const).map((step) => {
                   const isActive = activeTab === step;
                   return (
@@ -169,8 +169,8 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                       onClick={() => setActiveTab(step)}
                       className={`flex-1 py-1.5 px-2 text-center rounded-lg text-xs capitalize font-medium transition-all cursor-pointer ${
                         isActive
-                          ? "bg-gradient-to-r from-cyan-500/20 to-indigo-500/30 text-cyan-300 border border-cyan-500/30 font-semibold"
-                          : "text-slate-400 hover:text-slate-200"
+                          ? "bg-[#F4ACB7] text-[#222629] font-semibold border border-[#F4ACB7] shadow-xs"
+                          : "text-[#D8E2DC]/70 hover:text-white"
                       }`}
                     >
                       {step}
@@ -180,13 +180,13 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
               </div>
 
               {/* Active Tab Content Area */}
-              <div className="min-h-[220px] p-4 rounded-xl bg-slate-900/50 border border-slate-800/80 flex flex-col justify-between">
+              <div className="min-h-[220px] p-4 rounded-xl bg-[#222629] border border-[#9D8189]/25 flex flex-col justify-between">
                 {activeTab === "problem" && (
                   <div>
-                    <span className="text-xs font-mono text-amber-400 uppercase tracking-wide block mb-2">
+                    <span className="text-xs font-mono text-[#FFCAD4] uppercase tracking-wide block mb-2 font-semibold">
                       01 • Problem Statement
                     </span>
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-[#D8E2DC] text-xs sm:text-sm leading-relaxed">
                       {cs.problem}
                     </p>
                   </div>
@@ -194,10 +194,10 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
 
                 {activeTab === "approach" && (
                   <div>
-                    <span className="text-xs font-mono text-cyan-400 uppercase tracking-wide block mb-2">
+                    <span className="text-xs font-mono text-[#FFCAD4] uppercase tracking-wide block mb-2 font-semibold">
                       02 • Technical Approach
                     </span>
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-[#D8E2DC] text-xs sm:text-sm leading-relaxed">
                       {cs.approach}
                     </p>
                   </div>
@@ -205,13 +205,13 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
 
                 {activeTab === "technologies" && (
                   <div>
-                    <span className="text-xs font-mono text-indigo-400 uppercase tracking-wide block mb-2">
+                    <span className="text-xs font-mono text-[#FFCAD4] uppercase tracking-wide block mb-2 font-semibold">
                       03 • Core Stack & Frameworks
                     </span>
-                    <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+                    <ul className="space-y-2 text-xs sm:text-sm text-[#D8E2DC]">
                       {cs.technologies.map((t, i) => (
                         <li key={i} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#F4ACB7] shrink-0" />
                           <span>{t}</span>
                         </li>
                       ))}
@@ -221,13 +221,13 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
 
                 {activeTab === "results" && (
                   <div>
-                    <span className="text-xs font-mono text-emerald-400 uppercase tracking-wide block mb-2">
+                    <span className="text-xs font-mono text-[#FFCAD4] uppercase tracking-wide block mb-2 font-semibold">
                       04 • Verified Empirical Results
                     </span>
-                    <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
+                    <ul className="space-y-2 text-xs sm:text-sm text-[#D8E2DC]">
                       {cs.results.map((r, i) => (
                         <li key={i} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#F4ACB7] shrink-0" />
                           <span>{r}</span>
                         </li>
                       ))}
@@ -237,24 +237,24 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
 
                 {activeTab === "deployment" && (
                   <div>
-                    <span className="text-xs font-mono text-purple-400 uppercase tracking-wide block mb-2">
+                    <span className="text-xs font-mono text-[#FFCAD4] uppercase tracking-wide block mb-2 font-semibold">
                       05 • Production Delivery
                     </span>
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-[#D8E2DC] text-xs sm:text-sm leading-relaxed">
                       {cs.deployment}
                     </p>
                   </div>
                 )}
 
                 {/* Pipeline visual micro-flow */}
-                <div className="pt-3 mt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="pt-3 mt-4 border-t border-[#9D8189]/30 flex items-center justify-between text-[11px] font-mono text-[#D8E2DC]/70">
                   <span>Stream Input</span>
                   <span>→</span>
-                  <span className="text-cyan-400">MediaPipe</span>
+                  <span className="text-[#FFCAD4]">MediaPipe</span>
                   <span>→</span>
-                  <span className="text-indigo-400">Deep Learning</span>
+                  <span className="text-[#F4ACB7]">Deep Learning</span>
                   <span>→</span>
-                  <span className="text-emerald-400">47 Classes</span>
+                  <span className="text-[#D8E2DC] font-bold">47 Classes</span>
                 </div>
               </div>
             </div>

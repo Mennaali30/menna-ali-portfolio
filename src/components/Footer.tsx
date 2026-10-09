@@ -11,9 +11,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-slate-800/80 bg-slate-950 py-12 relative overflow-hidden">
+    <footer className="border-t border-[#9D8189]/30 bg-[#222629] py-12 relative overflow-hidden text-white">
       {/* Decorative subtle ambient line */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#9D8189]/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -23,44 +23,44 @@ export default function Footer() {
               <span className="font-bold text-lg text-white">
                 {personalInfo.name}
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-[#D8E2DC]/20 text-[#D8E2DC] border border-[#D8E2DC]/30 font-semibold">
                 AI / ML
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-mono">
+            <p className="text-xs text-[#D8E2DC]/80 font-mono">
               {personalInfo.title} • {personalInfo.location}
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6 text-sm text-slate-400">
+          <div className="flex items-center gap-6 text-sm text-[#D8E2DC]">
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-[#F4ACB7] transition-colors flex items-center gap-1.5"
             >
               <GithubIcon className="w-4 h-4" />
               <span>GitHub</span>
             </a>
 
-            <span className="text-slate-700">|</span>
+            <span className="text-[#9D8189]">|</span>
 
             <a
               href={personalInfo.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-indigo-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-[#F4ACB7] transition-colors flex items-center gap-1.5"
             >
               <LinkedinIcon className="w-4 h-4" />
               <span>LinkedIn</span>
             </a>
 
-            <span className="text-slate-700">|</span>
+            <span className="text-[#9D8189]">|</span>
 
             <a
               href={`mailto:${personalInfo.email}`}
-              className="hover:text-purple-400 transition-colors flex items-center gap-1.5"
+              className="hover:text-[#F4ACB7] transition-colors flex items-center gap-1.5"
             >
               <Mail className="w-4 h-4" />
               <span>Email</span>
@@ -72,7 +72,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-cyan-500/40 transition-all cursor-pointer"
+              className="p-2.5 rounded-xl bg-[#222629] border border-[#9D8189]/40 text-[#D8E2DC] hover:text-white hover:border-[#F4ACB7] transition-all cursor-pointer"
               aria-label="Back to top"
               title="Back to top"
             >
@@ -82,9 +82,9 @@ export default function Footer() {
         </div>
 
         {/* Copyright & Disclaimer */}
-        <div className="mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-2">
+        <div className="mt-8 pt-6 border-t border-[#9D8189]/20 flex flex-col sm:flex-row items-center justify-between text-xs text-[#D8E2DC]/70 font-mono gap-2">
           <p>© 2026 {personalInfo.name}. All rights reserved.</p>
-          <p className="text-[11px] text-slate-600">
+          <p className="text-[11px] text-[#D8E2DC]/60">
             Capital University (Helwan) Alumna • Excellent with Honors
           </p>
         </div>

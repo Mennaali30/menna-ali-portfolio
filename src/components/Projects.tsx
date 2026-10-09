@@ -43,21 +43,21 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       {/* Background radial glow */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#D8E2DC]/50 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#FFCAD4]/35 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 mb-3">
-            <FolderGit2 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono text-[#222629] bg-white border border-[#9D8189]/30 shadow-xs mb-3">
+            <FolderGit2 className="w-3.5 h-3.5 text-[#9D8189]" />
             <span>PORTFOLIO SHOWCASE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#222629] tracking-tight">
             Featured Projects &{" "}
             <span className="gradient-text">AI Implementations</span>
           </h2>
-          <p className="mt-3 text-slate-400 max-w-2xl text-sm sm:text-base">
+          <p className="mt-3 text-[#222629]/75 max-w-2xl text-sm sm:text-base">
             Engineered pipelines spanning multimodal perception, neural machine translation, computer vision, and predictive analytics.
           </p>
         </div>
@@ -69,8 +69,8 @@ export default function Projects() {
 
         {/* Category Filters Bar */}
         <div className="mt-16 mb-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <Filter className="w-4 h-4 text-cyan-400" />
+          <div className="flex items-center gap-2 text-xs font-mono text-[#9D8189] font-medium">
+            <Filter className="w-4 h-4 text-[#9D8189]" />
             <span>Filter by Domain:</span>
           </div>
 
@@ -85,16 +85,16 @@ export default function Projects() {
                   onClick={() => setSelectedCategory(category)}
                   className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-cyan-500 to-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-105 font-semibold"
-                      : "bg-slate-900/90 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-white"
+                      ? "bg-[#F4ACB7] text-[#222629] border border-[#F4ACB7] shadow-md shadow-[#F4ACB7]/25 scale-105 font-semibold"
+                      : "bg-white text-[#222629] border border-[#D8E2DC] hover:border-[#9D8189] hover:bg-[#D8E2DC]/40 shadow-xs"
                   }`}
                 >
                   <span>{category}</span>
                   <span
                     className={`px-1.5 py-0.2 rounded-full text-[10px] font-mono ${
                       isActive
-                        ? "bg-white/20 text-white"
-                        : "bg-slate-800 text-slate-400"
+                        ? "bg-[#222629]/15 text-[#222629] font-bold"
+                        : "bg-[#D8E2DC]/60 text-[#222629]/80"
                     }`}
                   >
                     {count}
@@ -118,7 +118,7 @@ export default function Projects() {
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12 glass-panel rounded-2xl p-8">
-            <p className="text-slate-400 text-sm">
+            <p className="text-[#222629]/75 text-sm">
               No projects found in this specific category.
             </p>
           </div>
