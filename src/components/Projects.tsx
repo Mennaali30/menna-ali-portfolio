@@ -6,7 +6,7 @@ import { Project } from "@/types/portfolio";
 import ProjectCard from "./ProjectCard";
 import FeaturedProject from "./FeaturedProject";
 import ProjectModal from "./ProjectModal";
-import { Sparkles, Filter, Code2, FolderGit2 } from "lucide-react";
+import { Filter, FolderGit2 } from "lucide-react";
 
 type CategoryFilter =
   | "All"

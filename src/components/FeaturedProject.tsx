@@ -2,22 +2,19 @@
 
 import React, { useState } from "react";
 import { featuredProject } from "@/data/portfolioData";
+import { GithubIcon } from "./SocialIcons";
 import {
-  Sparkles,
   Award,
   CheckCircle2,
-  Layers,
   Monitor,
   Smartphone,
   Globe,
   Activity,
   ArrowRight,
-  Eye,
+  ArrowUpRight,
   Smile,
   HandMetal,
-  Cpu,
-  ShieldCheck,
-  FolderGit2
+  ShieldCheck
 } from "lucide-react";
 
 interface FeaturedProjectProps {
@@ -137,14 +134,16 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
 
-                <button
-                  type="button"
-                  onClick={onOpenModal}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium bg-white hover:bg-[#D8E2DC]/40 text-[#222629] border border-[#9D8189]/30 transition-colors cursor-pointer"
+                <a
+                  href={featuredProject.githubUrl || "https://github.com/abdullahsherdy/ESL-software-ml"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white hover:bg-[#D8E2DC]/40 text-[#222629] border border-[#9D8189]/30 transition-colors cursor-pointer"
                 >
-                  <FolderGit2 className="w-3.5 h-3.5 text-[#9D8189]" />
-                  <span>Architecture & Pipeline</span>
-                </button>
+                  <GithubIcon className="w-3.5 h-3.5" />
+                  <span>GitHub Repository</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#9D8189]" />
+                </a>
               </div>
             </div>
 

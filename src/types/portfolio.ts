@@ -21,6 +21,11 @@ export interface Project {
     deployment: string;
   };
   githubUrl?: string;
+  liveUrl?: string;
+  colabUrl?: string;
+  primaryUrl?: string;
+  primaryUrlLabel?: string;
+  primaryUrlType?: "github" | "live" | "colab";
 }
 
 export interface ExperienceItem {

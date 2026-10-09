@@ -5,11 +5,7 @@ import { Project } from "@/types/portfolio";
 import { GithubIcon } from "./SocialIcons";
 import {
   ExternalLink,
-  ArrowUpRight,
-  Sparkles,
-  Layers,
   Activity,
-  Cpu,
   Eye,
   MessageSquare,
   FileText,
@@ -39,6 +35,8 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
 
   const glyph = getProjectGlyph();
   const GlyphIcon = glyph.icon;
+
+  const targetUrl = project.primaryUrl || project.githubUrl || project.liveUrl || project.colabUrl;
 
   return (
     <div className="glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden border border-[#9D8189]/20 hover:border-[#F4ACB7] shadow-xs">
@@ -140,16 +138,22 @@ export default function ProjectCard({ project, onViewDetails }: ProjectCardProps
           <span>View Details</span>
         </button>
 
-        <a
-          href="https://github.com/mennaali30"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="p-2 rounded-xl bg-white hover:bg-[#D8E2DC]/50 text-[#222629] hover:text-[#9D8189] border border-[#D8E2DC] shadow-xs transition-colors"
-          title="GitHub Profile & Repository Archive"
-          aria-label={`GitHub profile for ${project.title}`}
-        >
-          <GithubIcon className="w-4 h-4" />
-        </a>
+        {targetUrl && (
+          <a
+            href={targetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 rounded-xl bg-white hover:bg-[#D8E2DC]/50 text-[#222629] hover:text-[#9D8189] border border-[#D8E2DC] shadow-xs transition-colors inline-flex items-center justify-center cursor-pointer"
+            title={project.primaryUrlLabel || "Open Project"}
+            aria-label={`${project.primaryUrlLabel || "Open project"} for ${project.title}`}
+          >
+            {project.primaryUrlType === "github" ? (
+              <GithubIcon className="w-4 h-4" />
+            ) : (
+              <ExternalLink className="w-4 h-4" />
+            )}
+          </a>
+        )}
       </div>
     </div>
   );

@@ -7,9 +7,7 @@ import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 import {
   Mail,
   ArrowRight,
-  Sparkles,
   MapPin,
-  Bot,
   BrainCircuit,
   GraduationCap
 } from "lucide-react";
@@ -54,7 +52,7 @@ export default function Hero() {
             {/* Greeting */}
             <p className="text-sm sm:text-base font-mono uppercase tracking-wider text-[#9D8189] font-semibold mb-2 flex items-center gap-2">
               <span className="w-6 h-[2px] bg-[#9D8189]" />
-              Hi, I'm Menna Ali Abdelrahman
+              Hi, I&apos;m Menna Ali Abdelrahman
             </p>
 
             {/* Main Title */}
@@ -86,7 +84,7 @@ export default function Hero() {
                 onClick={() => scrollTo("contact")}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-white hover:bg-[#D8E2DC]/40 text-[#222629] border border-[#9D8189]/35 hover:border-[#9D8189] shadow-xs transition-all duration-200 cursor-pointer"
               >
-                <span>Let's Connect</span>
+                <span>Let&apos;s Connect</span>
               </button>
             </div>
 

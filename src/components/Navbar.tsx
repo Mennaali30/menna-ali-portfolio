@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Terminal, ArrowUpRight, Sparkles } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -22,22 +22,55 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = navLinks.map((link) => link.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl) {
-          const top = sectionEl.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sections[i]);
+      // Top of page boundary
+      if (scrollY < 100) {
+        setActiveSection("home");
+        return;
+      }
+
+      // Bottom of page boundary
+      if (windowHeight + scrollY >= documentHeight - 60) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Viewport threshold line just beneath sticky navbar (navbar height ~72px)
+      const thresholdLine = 120;
+      const sectionIds = ["home", "about", "projects", "skills", "experience", "education", "contact"];
+
+      let current: string | null = null;
+      let closestSection: string | null = null;
+      let minDistance = Infinity;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= thresholdLine && rect.bottom > thresholdLine) {
+            current = id;
             break;
+          }
+          const dist = Math.abs(rect.top - thresholdLine);
+          if (dist < minDistance) {
+            minDistance = dist;
+            closestSection = id;
           }
         }
       }
+
+      if (current) {
+        setActiveSection(current);
+      } else if (closestSection) {
+        setActiveSection(closestSection);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -47,9 +80,10 @@ export default function Navbar() {
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
-      const yOffset = -80;
+      setActiveSection(targetId);
+      const yOffset = -75;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
     }
   };
 
@@ -116,7 +150,7 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, "#contact")}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[#F4ACB7] hover:bg-[#F4ACB7]/90 text-[#222629] border border-[#F4ACB7] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
             >
-              <span>Let's Connect</span>
+              <span>Let&apos;s Connect</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -161,7 +195,7 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, "#contact")}
                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold bg-[#F4ACB7] text-[#222629] border border-[#F4ACB7] shadow-sm"
               >
-                <span>Let's Connect</span>
+                <span>Let&apos;s Connect</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>

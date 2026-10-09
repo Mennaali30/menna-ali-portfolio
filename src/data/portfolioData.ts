@@ -96,7 +96,11 @@ export const featuredProject: Project = {
     ],
     deployment:
       "Full multi-platform release engineered for ubiquitous accessibility: delivered as a responsive Web platform, a high-performance Desktop application, and a cross-platform Mobile application served via a Flask backend."
-  }
+  },
+  githubUrl: "https://github.com/abdullahsherdy/ESL-software-ml",
+  primaryUrl: "https://github.com/abdullahsherdy/ESL-software-ml",
+  primaryUrlLabel: "GitHub Repository",
+  primaryUrlType: "github"
 };
 
 export const projects: Project[] = [
@@ -134,7 +138,11 @@ export const projects: Project[] = [
       "K-Nearest Neighbors (KNN)",
       "GridSearchCV",
       "Inference Pipeline"
-    ]
+    ],
+    liveUrl: "https://cardiosense-ai-htcbewfaa3rtf64wmfv6df.streamlit.app/",
+    primaryUrl: "https://cardiosense-ai-htcbewfaa3rtf64wmfv6df.streamlit.app/",
+    primaryUrlLabel: "Live Streamlit App",
+    primaryUrlType: "live"
   },
   {
     id: "customer-churn-prediction",
@@ -175,7 +183,11 @@ export const projects: Project[] = [
       "SHAP Interpretability",
       "Streamlit Real-time App",
       "Retention Recommendations"
-    ]
+    ],
+    liveUrl: "https://cornea-recoil-mango.ngrok-free.dev/",
+    primaryUrl: "https://cornea-recoil-mango.ngrok-free.dev/",
+    primaryUrlLabel: "Live Application",
+    primaryUrlType: "live"
   },
   {
     id: "smart-panorama-object-recognition",
@@ -210,7 +222,11 @@ export const projects: Project[] = [
       "K-Means Image Segmentation",
       "PASCAL VOC 2012 Dataset",
       "Linear SVC, Naive Bayes, Logistic Regression"
-    ]
+    ],
+    githubUrl: "https://github.com/Mennaali30/smart-panorama",
+    primaryUrl: "https://github.com/Mennaali30/smart-panorama",
+    primaryUrlLabel: "GitHub Repository",
+    primaryUrlType: "github"
   },
   {
     id: "nmt-transformer",
@@ -248,7 +264,11 @@ export const projects: Project[] = [
       "Optimization: Noam LR Scheduler & Label Smoothing",
       "Precision: FP16 AMP Acceleration",
       "Inference: Beam Search Decoding"
-    ]
+    ],
+    githubUrl: "https://github.com/abdullahsherdy/Neural-machine-translation",
+    primaryUrl: "https://github.com/abdullahsherdy/Neural-machine-translation",
+    primaryUrlLabel: "GitHub Repository",
+    primaryUrlType: "github"
   },
   {
     id: "smart-review-analyzer",
@@ -283,7 +303,11 @@ export const projects: Project[] = [
       "Logistic Regression & Naive Bayes",
       "LSTM Deep Learning Model",
       "BERT Transformer Fine-Tuning"
-    ]
+    ],
+    colabUrl: "https://colab.research.google.com/drive/1b5Y0Kal6WAwUfWCnAOfKdUcEGhd43xvy?usp=sharing",
+    primaryUrl: "https://colab.research.google.com/drive/1b5Y0Kal6WAwUfWCnAOfKdUcEGhd43xvy?usp=sharing",
+    primaryUrlLabel: "Google Colab Notebook",
+    primaryUrlType: "colab"
   },
   {
     id: "raw-materials-classification",
@@ -317,7 +341,11 @@ export const projects: Project[] = [
       "VGG-19, ResNet50, MobileNetV2, Inception V1",
       "Data Augmentation & Regularization",
       "Tesla T4 GPU Accelerated Training"
-    ]
+    ],
+    githubUrl: "https://github.com/abdullahsherdy/DeepLearning_raw_materials_classification/tree/kaggle",
+    primaryUrl: "https://github.com/abdullahsherdy/DeepLearning_raw_materials_classification/tree/kaggle",
+    primaryUrlLabel: "GitHub Repository (kaggle branch)",
+    primaryUrlType: "github"
   }
 ];
 

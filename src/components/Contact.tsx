@@ -11,32 +11,86 @@ import {
   Check,
   Copy,
   MessageSquare,
-  Sparkles,
-  ArrowUpRight
+  ArrowUpRight,
+  AlertCircle,
+  Loader2
 } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    honeypot: ""
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    if (status === "submitting") return;
 
-    setIsSubmitting(true);
-    // Simulate brief responsive feedback
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setIsSubmitted(false), 6000);
-    }, 600);
+    // Client-side validations
+    const nameTrim = formData.name.trim();
+    const emailTrim = formData.email.trim();
+    const msgTrim = formData.message.trim();
+
+    if (!nameTrim || nameTrim.length < 2) {
+      setStatus("error");
+      setStatusMessage("Please enter your name (at least 2 characters).");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailTrim || !emailRegex.test(emailTrim)) {
+      setStatus("error");
+      setStatusMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (!msgTrim || msgTrim.length < 10) {
+      setStatus("error");
+      setStatusMessage("Please enter a message of at least 10 characters.");
+      return;
+    }
+
+    setStatus("submitting");
+    setStatusMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: nameTrim,
+          email: emailTrim,
+          message: msgTrim,
+          honeypot: formData.honeypot,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data?.success) {
+        setStatus("success");
+        setStatusMessage(data.message || "Thank you, message received! I'll get back to you promptly.");
+        setFormData({ name: "", email: "", message: "", honeypot: "" });
+      } else {
+        setStatus("error");
+        setStatusMessage(
+          data?.error ||
+          "Unable to send message via the email service. Please try again or reach out to Mennaali30617@gmail.com directly."
+        );
+      }
+    } catch {
+      setStatus("error");
+      setStatusMessage(
+        "Network connection error. Please try again or reach out directly to Mennaali30617@gmail.com."
+      );
+    }
   };
 
   const copyToClipboard = (text: string, label: string) => {
@@ -59,10 +113,10 @@ export default function Contact() {
             <span>GET IN TOUCH</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#222629] tracking-tight">
-            Let's Build <span className="gradient-text">Something Intelligent.</span>
+            Let&apos;s Build <span className="gradient-text">Something Intelligent.</span>
           </h2>
           <p className="mt-4 text-[#222629]/75 max-w-2xl text-base leading-relaxed">
-            Have a project, opportunity, or collaboration in mind? I'd love to connect.
+            Have a project, opportunity, or collaboration in mind? I&apos;d love to connect.
           </p>
         </div>
 
@@ -206,17 +260,41 @@ export default function Contact() {
               Fill out the message details below or connect via email directly.
             </p>
 
-            {isSubmitted && (
+            {status === "success" && (
               <div className="p-4 mb-6 rounded-2xl bg-[#D8E2DC]/80 border border-[#9D8189]/40 text-[#222629] text-xs sm:text-sm flex items-center gap-3 shadow-xs">
                 <Check className="w-5 h-5 text-[#222629] shrink-0" />
                 <div>
-                  <span className="font-semibold block">Thank you, message received!</span>
-                  <span>I'll get back to you promptly at your provided email.</span>
+                  <span className="font-semibold block">Thank you, message sent!</span>
+                  <span>{statusMessage || "I'll get back to you promptly at your provided email."}</span>
+                </div>
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="p-4 mb-6 rounded-2xl bg-[#FFCAD4]/60 border border-[#F4ACB7] text-[#222629] text-xs sm:text-sm flex items-start gap-3 shadow-xs">
+                <AlertCircle className="w-5 h-5 text-[#9D8189] shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold block">Notice</span>
+                  <span>{statusMessage}</span>
                 </div>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot field (anti-spam) */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.honeypot}
+                  onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="name"
@@ -273,11 +351,14 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={status === "submitting"}
                 className="w-full py-3.5 px-6 rounded-xl font-semibold text-sm bg-[#F4ACB7] hover:bg-[#F4ACB7]/90 text-[#222629] border border-[#F4ACB7] shadow-md shadow-[#F4ACB7]/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
               >
-                {isSubmitting ? (
-                  <span>Sending Message...</span>
+                {status === "submitting" ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-[#222629]" />
+                    <span>Sending Message...</span>
+                  </>
                 ) : (
                   <>
                     <Send className="w-4 h-4 text-[#222629]" />

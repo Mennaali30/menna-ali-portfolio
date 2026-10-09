@@ -7,14 +7,9 @@ import {
   X,
   CheckCircle2,
   Cpu,
-  Layers,
-  Award,
   Calendar,
   Activity,
-  ArrowRight,
-  ExternalLink,
-  ShieldCheck,
-  Zap
+  ExternalLink
 } from "lucide-react";
 
 interface ProjectModalProps {
@@ -221,16 +216,26 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
         {/* Modal Footer Actions */}
         <div className="mt-8 pt-5 border-t border-[#D8E2DC] flex flex-wrap items-center justify-between gap-3">
-          <a
-            href="https://github.com/mennaali30"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#F4ACB7] hover:bg-[#F4ACB7]/90 text-[#222629] border border-[#F4ACB7] shadow-xs hover:scale-[1.02] active:scale-[0.98] transition-all"
-          >
-            <GithubIcon className="w-4 h-4" />
-            <span>View on GitHub Profile</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          {(() => {
+            const targetUrl = project.primaryUrl || project.githubUrl || project.liveUrl || project.colabUrl;
+            if (!targetUrl) return null;
+            return (
+              <a
+                href={targetUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#F4ACB7] hover:bg-[#F4ACB7]/90 text-[#222629] border border-[#F4ACB7] shadow-xs hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              >
+                {project.primaryUrlType === "github" ? (
+                  <GithubIcon className="w-4 h-4" />
+                ) : (
+                  <ExternalLink className="w-4 h-4" />
+                )}
+                <span>{project.primaryUrlLabel || "Open Project"}</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            );
+          })()}
 
           <button
             type="button"
