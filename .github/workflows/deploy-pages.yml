@@ -1,0 +1,83 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    env:
+      API_BACKUP_DIR: ${{ runner.temp }}/portfolio_api_backup_${{ github.run_id }}_${{ github.run_attempt }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Isolate API route outside workspace
+        run: |
+          if [ -d "$API_BACKUP_DIR" ]; then
+            rm -rf "$API_BACKUP_DIR"
+          fi
+          if [ -d "src/app/api" ]; then
+            mkdir -p "${{ runner.temp }}"
+            mv src/app/api "$API_BACKUP_DIR"
+          fi
+
+      - name: Build static export for GitHub Pages
+        env:
+          BUILD_TARGET: github-pages
+        run: npm run build
+
+      - name: Restore API route to workspace
+        if: always()
+        run: |
+          if [ -d "$API_BACKUP_DIR" ]; then
+            if [ -d "src/app/api" ]; then
+              echo "::error::Conflict detected: Both $API_BACKUP_DIR and src/app/api exist. Halting restoration to prevent data loss."
+              exit 1
+            else
+              mkdir -p src/app
+              mv "$API_BACKUP_DIR" src/app/api
+            fi
+          fi
+
+      - name: Verify static export output
+        run: |
+          if [ ! -f "out/index.html" ]; then
+            echo "::error::Verification failed: out/index.html does not exist. Halting deployment."
+            exit 1
+          fi
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll
+
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
