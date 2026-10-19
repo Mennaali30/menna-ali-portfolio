@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Cpu, Activity, Zap, Sparkles } from "lucide-react";
+import { Cpu, Activity } from "lucide-react";
 
 interface Node {
   x: number;
@@ -25,7 +25,7 @@ interface Signal {
 
 export default function AiNeuralGraphic() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [activeTelemetry, setActiveTelemetry] = useState({
+  const [activeTelemetry] = useState({
     activeSynapses: 128,
     throughput: "240 FPS",
     confidence: "91.74%",
@@ -173,7 +173,7 @@ export default function AiNeuralGraphic() {
       });
 
       // Draw and advance synaptic signal pulses
-      signals.forEach((sig, idx) => {
+      signals.forEach((sig) => {
         sig.progress += sig.speed;
         const fromNode = nodes[sig.fromNode];
         const toNode = nodes[sig.toNode];

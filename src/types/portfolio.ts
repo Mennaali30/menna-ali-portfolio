@@ -1,3 +1,10 @@
+export type Specialization = "frontend" | "ai-ml";
+
+export interface ProjectMetric {
+  label: string;
+  value: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -5,10 +12,12 @@ export interface Project {
   date: string;
   type?: string;
   grade?: string;
-  categories: Array<'Machine Learning' | 'Deep Learning' | 'Computer Vision' | 'NLP' | 'Generative AI'>;
+  specialty: Specialization;
+  categories: string[];
   description: string;
   technologies: string[];
-  keyResult: string;
+  keyResult?: string;
+  metrics?: ProjectMetric[];
   detailedResults?: string[];
   architecture?: string[];
   dataset?: string;
@@ -26,6 +35,18 @@ export interface Project {
   primaryUrl?: string;
   primaryUrlLabel?: string;
   primaryUrlType?: "github" | "live" | "colab";
+  disclaimer?: string;
+  note?: string;
+  featuredProminence?: "high" | "medium" | "compact";
+}
+
+export interface SecondaryWebProject {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  githubUrl: string;
+  liveUrl?: string;
 }
 
 export interface ExperienceItem {
@@ -34,7 +55,9 @@ export interface ExperienceItem {
   role: string;
   track?: string;
   period: string;
-  status: string;
+  status: "Present" | "Completed" | "Accepted";
+  isOngoing?: boolean;
+  type: "training" | "internship" | "teaching" | "education";
   description: string;
   highlights: string[];
   skills: string[];
@@ -42,16 +65,17 @@ export interface ExperienceItem {
 
 export interface EducationItem {
   institution: string;
+  degree: string;
   faculty: string;
-  department: string;
-  period: string;
-  honors: string;
+  graduationDate: string;
   gpa: string;
+  honors: string;
   highlights: string[];
 }
 
-export interface SkillCategory {
+export interface SkillGroup {
   title: string;
-  icon: string;
+  specialty: Specialization | "generative";
+  description: string;
   skills: string[];
 }

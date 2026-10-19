@@ -29,7 +29,7 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>("All");
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = projects.filter((project: Project) => {
     if (selectedCategory === "All") return true;
     return project.categories.includes(selectedCategory);
   });
@@ -37,7 +37,7 @@ export default function Projects() {
   // Calculate project counts per category
   const getCategoryCount = (category: CategoryFilter) => {
     if (category === "All") return projects.length;
-    return projects.filter((p) => p.categories.includes(category)).length;
+    return projects.filter((p: Project) => p.categories.includes(category)).length;
   };
 
   return (
@@ -107,11 +107,11 @@ export default function Projects() {
 
         {/* Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project: Project) => (
             <ProjectCard
               key={project.id}
               project={project}
-              onViewDetails={(p) => setActiveModalProject(p)}
+              onViewDetails={(p: Project) => setActiveModalProject(p)}
             />
           ))}
         </div>

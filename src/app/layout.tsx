@@ -13,33 +13,35 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
+  themeColor: "#F8F7F4",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Menna Ali Abdelrahman | AI & Machine Learning Engineer",
+  title: "Menna Ali Abdelrahman | AI & ML Engineer & Frontend Developer",
   description:
-    "Personal portfolio of Menna Ali Abdelrahman, AI & Machine Learning Engineer and Computer Science & Artificial Intelligence graduate with Excellent with Honors from Capital University. Specialized in Deep Learning, Computer Vision, NLP, and Agentic AI.",
+    "Portfolio of Menna Ali Abdelrahman — AI & Machine Learning Engineer and Frontend Developer (React.js, Next.js). Computer Science and Artificial Intelligence graduate from Capital University (formerly Helwan University) with Excellent with Honors (GPA 3.67/4.00).",
   keywords: [
     "Menna Ali Abdelrahman",
     "Menna Ali",
-    "AI Engineer",
-    "Machine Learning Engineer",
+    "AI & Machine Learning Engineer",
+    "Frontend Developer",
+    "React.js Developer",
+    "Next.js Developer",
     "Deep Learning",
     "Computer Vision",
     "NLP",
     "WASLA Sign Language",
     "Capital University",
     "Helwan University",
-    "Egypt AI Engineer"
+    "Egypt Software Engineer"
   ],
   authors: [{ name: "Menna Ali Abdelrahman" }],
   openGraph: {
-    title: "Menna Ali Abdelrahman | AI & Machine Learning Engineer",
+    title: "Menna Ali Abdelrahman | AI & ML Engineer & Frontend Developer",
     description:
-      "Specialized in designing and deploying machine learning systems, from classification models to deep learning and computer vision pipelines.",
+      "Dual-specialized in building modern, responsive React/Next.js frontend applications and practical AI/Machine Learning pipelines.",
     type: "website",
     locale: "en_US",
   },
@@ -55,7 +57,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white text-[#222629] selection:bg-[#FFCAD4] selection:text-[#222629]">
+      <body className="min-h-full flex flex-col bg-[#F8F7F4] text-[#202124] selection:bg-[#FFCAD4] selection:text-[#202124]">
         {children}
       </body>
     </html>

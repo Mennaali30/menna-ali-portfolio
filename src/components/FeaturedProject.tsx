@@ -113,7 +113,7 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
 
               {/* Technologies Pills */}
               <div className="flex flex-wrap gap-1.5 mb-8">
-                {featuredProject.technologies.map((tech) => (
+                {featuredProject.technologies.map((tech: string) => (
                   <span
                     key={tech}
                     className="px-2.5 py-1 rounded-md text-xs font-medium bg-white text-[#222629] border border-[#D8E2DC] shadow-xs"
@@ -208,7 +208,7 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                       03 • Core Stack & Frameworks
                     </span>
                     <ul className="space-y-2 text-xs sm:text-sm text-[#D8E2DC]">
-                      {cs.technologies.map((t, i) => (
+                      {cs.technologies.map((t: string, i: number) => (
                         <li key={i} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#F4ACB7] shrink-0" />
                           <span>{t}</span>
@@ -224,7 +224,7 @@ export default function FeaturedProject({ onOpenModal }: FeaturedProjectProps) {
                       04 • Verified Empirical Results
                     </span>
                     <ul className="space-y-2 text-xs sm:text-sm text-[#D8E2DC]">
-                      {cs.results.map((r, i) => (
+                      {cs.results.map((r: string, i: number) => (
                         <li key={i} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-[#F4ACB7] shrink-0" />
                           <span>{r}</span>
